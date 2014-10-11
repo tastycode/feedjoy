@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="large-8 columns">
+    <h2>Pickups</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-8 columns">
+    <table class="table">
+      <tr>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Weight (lbs)</th>
+      </tr>
+      <tr ng-repeat="(status, meta) in summary">
+        <td>
+          <span class="label {{status}}">
+            {{status}}
+          </span>
+        </td>
+        <td>{{meta.total}}</td>
+        <td>{{meta.weight}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="large-9 columns">
+    <p ng-hide="pickups.length">
+      There are no pickups
+    </p>
+    <table class="table" ng-if="pickups.length">
+      <tr><th>Kind</th><th ng-if="!filterStatus">Status</th><th>Reported</th><th>Pickup At</th><th>Location</th><th>&nbsp;</th></tr>
+      <tr ng-repeat="pickup in pickups">
+        <td>
+          <a ng-href='/admin/pickups/{{pickup._id}}'>{{pickup.kind}}</a>
+          <p ng-show="pickup.weight">{{pickup.weight | number}} lbs</p>
+
+          <a class="pickup-image" ng-href="{{pickup.image.original.defaultUrl}}" target='_blank' ng-show="pickup.image">
+            <img ng-src="{{pickup.image.small.defaultUrl}}"/>
+          </a>
+        </td>
+        <td ng-if="!filterStatus">
+          <span class="label {{pickup.status}}">{{pickup.status}}</span>
+        </td>
+
+        <td am-time-ago="pickup.createdAt">&nbsp;</td>
+        <td>{{pickup.pickupAt | amCalendar}}</td>
+        <td>{{pickup.location.text}}</td>
+        <td>{{pickup.phone}}</td>
+        <td>
+          <button ng-hide="pickup.status === 'canceled'" ng-click="cancel(pickup)">Cancel</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="large-3 columns">
+    <h3>Pickup Status</h3>
+    <ul class="side-nav">
+      <li ng-class="{active: !filterStatus}">
+        <a href="" ng-click="filterStatus = null">All</a>
+      </li>
+      <li ng-class="{active: filterStatus === 'available'}">
+      <a href="" ng-click="filterStatus = 'available'" title="{{summary.available.weight}} lbs">
+          Available
+          <span ng-show="summary.available">({{summary.available.total}})</span>
+        </a>
+      </li>
+      <li ng-class="{active: filterStatus === 'claimed'}">
+        <a href="" ng-click="filterStatus = 'claimed'" title="{{summary.claimed.weight}} lbs">
+          Claimed
+          <span ng-show="summary.claimed">({{summary.claimed.total}})</span>
+      </a>
+      </li>
+      <li ng-class="{active: filterStatus === 'moving'}">
+        <a href="" ng-click="filterStatus = 'moving'" title="{{summary.moving.weight}} lbs">
+          Moving
+          <span ng-show="summary.moving">({{summary.moving.total}})</span>
+      </a>
+      </li>
+      <li ng-class="{active: filterStatus === 'complete'}">
+        <a href="" ng-click="filterStatus = 'complete'" title="{{summary.complete.weight}} lbs">
+          Complete
+          <span ng-show="summary.complete">({{summary.complete.total}})</span>
+        </a>
+      </li>
+      <li ng-class="{active: filterStatus === 'canceled'}">
+        <a href="" ng-click="filterStatus = 'canceled'" title="{{summary.canceled.weight}} lbs">
+          Canceled
+          <span ng-show="summary.canceled">({{summary.canceled.total}})</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

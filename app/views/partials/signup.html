@@ -1,0 +1,89 @@
+<div class="hero">
+  <h1 class="title">Sign Up</h1>
+</div>
+<div class="page-content row">
+  <div class="page-fields large-12 columns">
+    <form class="form" name="form" ng-submit="register(form)" novalidate>
+      <div class="form-row">
+        <label class="above-field">Name
+          <input type="text" name="name" class="field" ng-model="user.name" placeholder="Jane Smith"
+          ng-required/>
+        </label>
+        <p class="field error" ng-show="form.name.$error.required && submitted">
+        A name is required
+        </p>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Organization Name (Optional)
+          <input type="text" name="organizationName" class="field" ng-model="user.organizationName"/>
+        </label>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Address
+        <input type="text" name="address" ng-required class="field" ng-autocomplete ng-model="autocomplete" options="{type: 'geocode'}" details="autocompleteDetail"/>
+      </labeL>
+        <p class="field error" ng-show="form.address.$error.required && submitted">
+          An address is required
+        </p>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Phone
+          <input type="text" phone="phone" class="field" ng-model="user.phone"
+          required/>
+        </label>
+        <p class="field error" ng-show="form.phone.$error.required && submitted">
+        A phone is required
+        </p>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Email
+          <input type="email" name="email" class="field" ng-model="user.email"
+          required
+          mongoose-error/>
+        </label>
+        <p class="field error" ng-show="form.email.$error.email && submitted">
+        Doesn't look like a valid email.
+        </p>
+        <p class="field error" ng-show="form.email.$error.mongoose">
+        {{ errors.email }}
+        </p>
+      </div>
+
+      <div class="form-row">
+        <label class="above-field">Password
+          <input type="password" name="password" class="field" ng-model="user.password"
+          ng-minlength="3"
+          required
+          mongoose-error/>
+        </label>
+        <p class="field error"
+        ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+        Password must be at least 3 characters.
+        </p>
+        <p class="field error" ng-show="form.password.$error.mongoose">
+        {{ errors.password }}
+        </p>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Anything else we should know?
+        <textarea ng-model="user.notes" class="field" placeholder="(optional)"></textarea>
+        </label>
+      </div>
+      <div class="form-row">
+        <label class="above-field">Please check any options that apply to you</label>
+
+        <label ng-repeat="role in roles" class="field">
+            <input type="checkbox" checklist-model="user.roleTags" checklist-value="role.id"> {{role.text}}
+          </label>
+      </div>
+      <div class="form-row">
+        <div class="large-9 columns">
+          <button class="tm-medium" type="submit">Sign up</button>
+          <hr>
+          Have an account? <a href="/login" class="text-center new-account">Log in.</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

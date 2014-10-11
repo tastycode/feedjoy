@@ -1,0 +1,22 @@
+@import "mixins";
+.form-row {
+  .above-field {
+    @include span-columns(12);
+  }
+}
+
+.page-fields {
+  @include rounded-white-container();
+}
+
+.field {
+  @include span-columns(12);
+}
+
+form .error {
+  color: $red;
+}
+
+.field-third {
+  @include span-columns(4);
+}

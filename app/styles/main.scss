@@ -1,0 +1,34 @@
+@import "bourbon";
+@import "neat";
+@import "mixins";
+@import "fonts";
+@import "flexbox";
+
+
+@import "style_guide";
+@import "forms";
+@import "navbar";
+
+body {
+  font-family: $font-proxima-nova;
+}
+
+.main {
+  background-color: $grey1;
+  @include clearfix();
+}
+
+* {
+  transition: all 0.3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+button, .button {
+  box-shadow: none;
+}
+
+
+@import "pickup";

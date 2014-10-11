@@ -1,0 +1,46 @@
+<div class="hero">
+  <h1>Your Profile</h1>
+</div>
+<div class="row page-content">
+  <div class="page-fields large-12 columns">
+    <form class="form" name="form" ng-submit="updateProfile(form)" novalidate>
+      <fieldset ng-if="hasRole(currentUser, 'agency')">
+        <legend>Alert Settings</legend>
+        <div class="form-row" ng-if="hasRole(currentUser, 'agency')">
+          <label class="above-field">Minimum Weight
+            <input type="text" pattern="\d*" name="minimumWeight" class="field" ng-model="user.minimumWeight"/>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Change Password</legend>
+        <div class="form-row">
+          <label class="above-field">Current Password
+            <input type="password" name="password" class="field" ng-model="user.oldPassword"
+                   mongoose-error/>    
+         </label>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+        <div class="form-row">
+          <label class="above-field">New Password
+
+          <input type="password" name="newPassword" class="field" ng-model="user.newPassword" 
+            ng-minlength="3"/>
+           </label>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+      </fieldset>
+
+      <p class="help-block"> {{ message }} </p>
+
+      <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+    </form>
+
+  </div>
+</div>

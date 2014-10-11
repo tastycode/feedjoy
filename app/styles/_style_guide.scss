@@ -1,0 +1,63 @@
+@mixin rounded-white-container {
+  border-radius: 5px;
+  background: $white;
+  border: 1px solid $grey3;
+  padding: 2em;
+}
+
+.tm-medium {
+  margin-top: $gap-medium;
+}
+
+.bp-medium {
+  padding-bottom: $gap-medium;
+}
+
+.bp-large {
+  padding-bottom: $gap-large;
+}
+
+.tp-medium {
+  padding-top: $gap-medium;
+}
+
+.bp-small {
+  padding-bottom: $gap-small;
+}
+
+.hero {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: center;
+}
+
+h1.title {
+  font-size: $fs-xlarge;
+  font-weight: $weight-light;
+}
+
+fieldset {
+  border: none;
+}
+
+table.table {
+  width: 100%;
+}
+
+.label {
+  &.available {
+    background-color: $color4;
+  }
+  &.claimed {
+    background-color: $color2;
+  }
+  &.moving {
+    background-color: $color6;
+  }
+  &.complete {
+    background-color: $color7;
+  }
+  &.canceled {
+    background-color: $red;
+  }
+}

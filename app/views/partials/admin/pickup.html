@@ -1,0 +1,124 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1>{{pickup.kind}}</h1>
+    <div class="pickup status label {{pickup.status}}">{{pickup.status}}</div>
+    <div class="detail list tm-medium bm-medium">
+      <div class="detail">
+        <strong>Weight:</strong>
+        <span class="pickup address">{{pickup.weight}} lbs</span>
+      </div>
+      <div class="detail">
+        <strong>Location:</strong>
+        <span class="pickup address">{{pickup.location.text}}</span>
+      </div>
+      <div class="detail">
+        <strong>Pickup From:</strong>
+        <span class="pickup date">{{pickup.pickupAt | amCalendar}}</span>
+        <div ng-show="pickup.finishBy">
+          <strong>Pickup Until:</strong>
+          <span class="pickup date">{{pickup.finishBy | amCalendar}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="large-12 columns bm-small" ng-show="pickup.donorUser">
+      <h2 class="subheader">Donor Information</h2>
+      <div class="detail">
+        <strong>Name:</strong>
+        <span class="user name">{{pickup.donorUser.name}}</span>
+      </div>
+      <div class="detail">
+        <strong>Address:</strong>
+        <span class="user address">{{pickup.donorUser.location.text}}</span>
+      </div>
+      <div class="detail">
+        <strong>Phone:</strong>
+        <span class="user phone">{{pickup.donorUser.phone}}</span>
+      </div>
+  </div>
+
+  <div class="large-12 columns bm-small" ng-show="pickup.claimedUser">
+      <h2 class="subheader">Recipient Agency Information</h2>
+      <div class="detail">
+        <strong>Name:</strong>
+        <span class="user name">{{pickup.claimedUser.name}}</span>
+      </div>
+      <div class="detail">
+        <strong>Address:</strong>
+        <span class="user address">{{pickup.claimedUser.location.text}}</span>
+      </div>
+      <div class="detail">
+        <strong>Phone:</strong>
+        <span class="user phone">{{pickup.claimedUser.phone}}</span>
+      </div>
+      <button class="button secondary tm-medium" ng-click="resetTo('available')">Unassign</button>
+  </div>
+
+  <div class="large-12 columns" ng-show="pickup.movingUser">
+      <h2 class="subheader">Courier Information</h2>
+      <div class="detail">
+        <strong>Name:</strong>
+        <span class="user name">{{pickup.movingUser.name}}</span>
+      </div>
+      <div class="detail">
+        <strong>Address:</strong>
+        <span class="user address">{{pickup.movingUser.location.text}}</span>
+      </div>
+      <div class="detail">
+        <strong>Phone:</strong>
+        <span class="user phone">{{pickup.movingUser.phone}}</span>
+      </div>
+      <button class="button secondary tm-medium" ng-click="resetTo('claimed')">Unassign</button>
+  </div>
+
+  <div class="large-12 columns" ng-show="nearbyAgencies">
+    <h2 class="subheader">Nearby Agencies</h2>
+    <table class="table">
+      <tr><th>Name</th><th>Created</th><th>Address</th><th>Phone</th><th>&nbsp;</th></tr>
+      <tr ng-repeat="user in nearbyAgencies">
+        <td>
+          {{user.name}}
+        </td>
+        <td am-time-ago="user.createdAt">&nbsp;</td>
+        <td>
+          {{user.location.text}}
+          <span ng-show="user.d">({{user.d | number:2}} miles)</span>
+        </td>
+        <td>{{user.phone}}</td>
+        <td>
+          <button ng-click="claimFor(user)">Assign</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="large-12 columns" ng-show="nearbyCouriers">
+    <h2 class="subheader">Nearby Couriers</h2>
+    <table class="table">
+      <tr><th>Name</th><th>Created</th><th>Address</th><th>Phone</th><th>&nbsp;</th></tr>
+      <tr ng-repeat="user in nearbyCouriers">
+        <td>
+          {{user.name}}
+        </td>
+        <td am-time-ago="user.createdAt">&nbsp;</td>
+        <td>
+          {{user.location.text}}
+          <span ng-show="user.d">({{user.d | number:2}} miles)</span>
+        </td>
+        <td>{{user.phone}}</td>
+        <td>
+          <button ng-click="moveFor(user)">Assign</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="large-12 columns tm-medium" ng-show="pickup.movingUser && pickup.status !== 'complete'">
+      <button ng-click="complete()">Complete</button>
+  </div>
+
+  <div class="large-12 columns tm-medium" ng-show="pickup.status !== 'canceled' && pickup.status !== 'complete'">
+      <button ng-click="cancel()">Cancel</button>
+  </div>
+</div>

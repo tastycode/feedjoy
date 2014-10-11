@@ -1,0 +1,22 @@
+<div class="hero">
+  <h1 class="title">Pickup Scheduled</h1>
+</div>
+<div class="page-content row">
+  <div class="container large-12-columns">
+    <p>We'll get a local food agency on that right away. The agency may call you when they arrive to get more details about the pickup.</p>
+    <div class="row">
+      <div class="large-4 columns">
+        <leaflet center="center" tiles="tiles" markers="markers" style="width: 100%" height="300px"></leaflet>
+      </div>
+      <div class="large-8 columns">
+        <div class="pickup">
+          <strong class="kind">{{pickup.kind}}</storng>
+          <p class="adr">
+            <span class="street-address">{{pickup.location.text}}</span><br>
+            <span class="region">{{pickup.city}}, {{pickup.state}}</span><br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

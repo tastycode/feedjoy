@@ -1,0 +1,85 @@
+<div class="hero">
+  <h1 class="title">Schedule a pickup</h1>
+</div>
+<div class="page-content row">
+  <div class="page-fields large-12 columns">
+    <form class="form" name="form" ng-submit="createPickup(form)" novalidate>
+      <div class="form-row">
+        <label class="large-6 small-12 columns">Kind of Food
+          <input class="field" name="kind" type="text" placeholder="20 Breakfast Burritos" ng-model="pickup.kind" required>
+          <p class="error" ng-show="form.kind.$error.required && submitted">
+          Kind of food is required
+          </p>
+        </label>
+        <label class="large-6 small-12 columns">Estimated Weight (lbs)
+          <input type="text" ng-model="pickup.weight">
+          <input type="range" class="field" name="weight" ng-model="pickup.weight"  min="1" max="500" required>
+          <p class="error" ng-show="form.weight.$error.required && submitted">
+          Weight is required
+          </p>
+          <span class="help-block" ng-show="pickup.weight > 0">{{pickup.weight}} lbs of food</span>
+        </label>
+      </div>
+      <div class="form-row">
+        <label class="large-12 columns">Picture (Optional)
+          <input type="file" ng-file-select="onFileSelect($files)"/>
+        </label>
+      </div>
+
+
+      <div class="form-row">
+        <label class="above-field">Address
+          <input type="text" name="address" class="field" ng-autocomplete ng-model="autocomplete" details="autocompleteDetail" options="{type: 'geocode'}" required>
+          <p class="error" ng-show="form.address.$error.required && submitted">
+            An address is required
+          </p>
+        </label>
+      </div>
+
+      <hr class="form-divider"/>
+
+      <div class="form-row">
+        <label class="above-field">Phone
+          <input type="tel" name="phone" class="field" ng-model="pickup.phone" placeholder="209-559-2450" required>
+        </label>
+        <p class="field error" ng-show="form.phone.$error.required && submitted">
+        A phone is required
+        </p>
+      </div>
+      <fieldset>
+        <legend>When is your donation available?</legend>
+        <div class="form-row collapse">
+          <div class="field-third">
+            <label>From Date</label>
+            <select class="field-divided" ng-model="pickupAtDate" ng-options="o as o for o in dayOptions">
+            </select>
+          </div>
+          <div class="field-third">
+            <label>Time</label>
+            <select class="field-divided" ng-model="pickupAtTime" ng-options="o as o for o in timeOptions">
+            </select>
+          </div>
+        </div>
+        <div class="form-row collapse">
+          <div class="field-third">
+            <label>Until Date</label>
+            <select class="field-divided" ng-model="finishByDate" ng-options="o as o for o in dayOptions">
+            </select>
+          </div>
+          <div class="field-third">
+            <label>Time</label>
+            <select class="field-divided" ng-model="finishByTime" ng-options="o as o for o in timeOptions">
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <div class="form-row">
+        <div ng-controller="SubmitCtrl">
+          <button class="btn btn-lg btn-primary" ng-disabled="processing" type="submit">{{submitText}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

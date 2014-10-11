@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="large-8 columns">
+    <h2>Nearby Pickups</h2>
+    <table class="table" ng-show="pickups.length">
+      <tr><th>Kind</th><th>Reported</th><th>Date</th><th>Address</th><th>Phone</th><th>&nbsp;</th></tr>
+      <tr ng-repeat="pickup in pickups">
+        <td>
+          {{pickup.kind}}
+          <a class="donation-image" ng-href="{{pickup.image.original.defaultUrl}}" target='_blank' ng-show="pickup.image">
+            <img ng-src="{{pickup.image.small.defaultUrl}}"/>
+          </a>
+        </td>
+        <td am-time-ago="pickup.createdAt">&nbsp;</td>
+        <td>{{pickup.pickupAt | amCalendar}}</td>
+        <td>
+          {{pickup.location.text}}
+          <span ng-show="pickup.d">({{pickup.d | number:2}} miles)</span>
+        </td>
+        <td>{{pickup.phone}}</td><td><button ng-click="claim(pickup)">Claim</button></td>
+      </tr>
+    </table>
+    <p ng-hide="pickups.length">
+      No nearby pickups
+    </p>
+  </div>
+  <div class="large-4 columns">
+    <leaflet ng-show="pickups" center="center" tiles="tiles" markers="markers" style="width: 100%" height="300px"></leaflet>
+  </div>
+</div>
+<div class="row">
+  <div class="large-8 columns end">
+    <div ng-show="claimedPickups.length">
+      <h2>Claimed Pickups</h2>
+      <table class="table">
+        <tr><th>Kind</th><th>Claimed At</th><th>Address</th><th>Phone</th><th>&nbsp;</th></tr>
+        <tr ng-repeat="pickup in claimedPickups track by $index">
+          <td>{{pickup.kind}}</td><td am-time-ago="pickup.updatedAt"></td><td>{{pickup.location.text}}</td><td>{{pickup.phone}}</td><td><button ng-click="complete(pickup)">Complete</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

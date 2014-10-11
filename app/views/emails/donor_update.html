@@ -1,0 +1,35 @@
+<h1>Pickup Updates</h1>
+<h2>{{pickup.kind}}</h2>
+<p>
+  {{pickup.location.text}}
+</p>
+
+<p>Your pickup has been marked as <strong>{{pickup.status}}</strong></p>
+
+{{#if pickup.claimedUser}}
+  <b>Dropoff User Info:</b>
+  <p>
+    {{pickup.claimedUser.name}}
+    {{pickup.claimedUser.location.text}}
+  </p>
+
+  <b>Dropoff Contact Info:</b>
+  <p>
+    {{pickup.claimedUser.name}}
+    {{pickup.claimedUser.phone}}
+  </p>
+{{/if}}
+
+{{#if pickup.movingUser}}
+  <b>Courier User Info:</b>
+  <p>
+    {{pickup.movingUser.name}}
+    {{pickup.movingUser.location.text}}
+  </p>
+
+  <b>Courier Contact Info:</b>
+  <p>
+    {{pickup.movingUser.name}}
+    {{pickup.movingUser.phone}}
+  </p>
+{{/if}}

@@ -1,0 +1,91 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="voiceApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="voiceApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="voiceApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="feedjoyApp"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title ng-bind="pageTitle">EXTRA's The Voice Bootcamp Experience</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ng-include="'partials/navbar'"></div>
+    <div class="container" ng-view=""></div>
+    <div class="footer row">
+      <p>&copy; 2014 Illuminated Engine, Inc</p>
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js(app) scripts/vendor.js -->
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload-html5-shim.js"></script>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/jquery-waypoints/waypoints.js"></script>
+    <script src="bower_components/angulartics/src/angulartics.js"></script>
+    <script src="bower_components/checklist-model/checklist-model.js"></script>
+    <script src="bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/angulartics/src/angulartics-mixpanel.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/admin_pickup.js"></script>
+        <script src="scripts/controllers/admin_pickups.js"></script>
+        <script src="scripts/controllers/admin_users_edit.js"></script>
+        <script src="scripts/controllers/admin_users.js"></script>
+        <script src="scripts/controllers/agencies.js"></script>
+        <script src="scripts/controllers/couriers.js"></script>
+        <script src="scripts/controllers/donors.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/home_agency.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/controllers/pickup.js"></script>
+        <script src="scripts/controllers/pickup_form.js"></script>
+        <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/submit.js"></script>
+
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/pickup_service.js"></script>
+        <script src="scripts/services/request-counter.js"></script>
+        <script src="scripts/services/map_service.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

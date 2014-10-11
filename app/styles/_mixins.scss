@@ -1,0 +1,50 @@
+
+$white: #fff;
+$grey1: #f2f2f2;
+$grey2: #e1e4e4;
+$grey3: #cccdce;
+$grey4: #8c8d8e;
+$grey5: #616265;
+$grey6: #212121;
+$green: #91C46C;
+$red: #f00;
+$color1: #fc6000;
+$color2: #fc6002;
+$color3: #fc6003;
+$color4: #fc6004;
+$color5: #fc6005;
+$color6: #fc6006;
+$color7: #fc6007;
+
+$weight-ultralight: 100;
+$weight-light: 200;
+$weight-semibold: 600;
+$weight-extrabold: 900;
+
+$iphone-landscape: 480px;
+$ipad-portrait: 768px;
+$ipad-landscape: 1024px;
+ 
+$bp-small: new-breakpoint(max-width $iphone-landscape 6);
+$bp-medium: new-breakpoint(max-width $ipad-portrait 12);
+$bp-large: new-breakpoint(min-width $ipad-portrait 12);
+
+// Base colours.
+$font-proxima-nova: "Proxima Nova", Lucida Sans, Trebuchet, sans-serif;
+$base-ratio: 1.618; 
+$line-height-ratio: 1.4;
+ 
+$fs-root: 15px;
+$fs-xsmall: modular-scale(1rem, -2, $base-ratio);
+$fs-small: modular-scale(1rem, -1, $base-ratio);
+$fs-medium: modular-scale(1rem, 0, $base-ratio);
+$fs-large: modular-scale(1rem, 1, $base-ratio);
+$fs-xlarge: modular-scale(1rem, 2, $base-ratio);
+ 
+$gap-xlarge: modular-scale(1em, 2, $base-ratio);
+$gap-large: modular-scale(1em, 1, $base-ratio);
+$gap-medium: modular-scale(1em, 0, $base-ratio);
+$gap-small: modular-scale(1em, -1, $base-ratio);
+$gap-xsmall: modular-scale(1em, -2, $base-ratio);
+
+
